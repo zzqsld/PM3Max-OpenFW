@@ -43,8 +43,8 @@ if $SHORT && [ "$VERSIONSRC" != "" ]; then
     exit 1
 fi
 
-# if you are making your own fork,  change this line to reflect your fork-name
-fullgitinfo="Iceman"
+# Fork name shown in version info. This fork: PM3Max-OpenFW
+fullgitinfo="github.com/zzqsld/PM3Max-OpenFW"
 # GIT status  0 = dirty,  1 = clean ,  2 = undecided
 clean=2
 
@@ -56,12 +56,10 @@ if [ "$commandGIT" != "" ]; then
     # now avoiding the "fatal: No names found, cannot describe anything." error by fallbacking to abbrev hash in such case
     gitversion=$(git describe --dirty --always)
     gitbranch=$(git rev-parse --abbrev-ref HEAD)
-    if $UNDECIDED; then
-        if [ "$gitversion" != "${gitversion%-dirty}" ]; then
-            clean=0
-        else
-            clean=1
-        fi
+    if [ "$gitversion" != "${gitversion%-dirty}" ]; then
+        clean=0
+    else
+        clean=1
     fi
     if [ "$gitbranch" != "" ] && [ "$gitversion" != "" ]; then
         fullgitinfo="${fullgitinfo}/${gitbranch}/${gitversion}"
