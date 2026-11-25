@@ -4,9 +4,14 @@
 
 厂商自带的固件停留在 2024 年的 v4.20728 时代且源码闭源，本项目把整个移植过程、补丁、预编译 FPGA 镜像和刷机工具全部公开，任何人都可以自行编译、验证和改进。
 
+> **配套手机 App：[ProxPocket](https://github.com/zzqsld/ProxPocket)** —— 在 Android 手机上通过 USB OTG 驱动 PM3 Max 的开源客户端，内置与本固件同源的 RRG v4.23346 完整核心：Mifare 一键智能解析（含三代 SEN 攻击）、低频读写、CPU/公交卡、Ultralight/ISO15693、完整终端。刷上本固件后手机装个 APK 即可出门读卡，无需电脑。
+
 ---
 
 ## 目录
+
+- [配套 App：ProxPocket](#配套-appproxpocket)
+- [特性与改进](#特性与改进)
 
 - [特性与改进](#特性与改进)
 - [硬件分析](#硬件分析)
@@ -18,6 +23,20 @@
 - [目录结构](#目录结构)
 - [致谢与许可](#致谢与许可)
 - [免责声明](#免责声明)
+
+---
+
+## 配套 App：ProxPocket
+
+[ProxPocket](https://github.com/zzqsld/ProxPocket) 是与本固件配套的开源 Android 客户端（GPLv3），通过 USB OTG 连接 PM3 Max，把完整的 pm3 客户端搬到手机上：
+
+- 原生核心与本固件同源（RRG v4.23346 编译为 `libpm3rrg_rdv4.so`），版本哈希对齐，无 "ARM firmware does not match" 警告
+- 高频 M1 卡一键智能解析（默认密钥 / Nested / Hardnested / 三代 FM11RF08S 静态随机数攻击）、dump 浏览编辑、写 UID/CUID/GDM、锁 UFUID、卡片修复
+- 低频读 ID / 写 T5577、CPU 卡与公交卡（余额、交易记录）、DESFire、Ultralight/NTAG、ISO15693
+- 完整 pm3 终端，可执行任意客户端命令
+- 内置合并密钥字典，免连接可先浏览功能界面
+
+APK 下载见 [ProxPocket Releases](https://github.com/zzqsld/ProxPocket/releases)（Android 8.0+，支持 arm64 / arm32 / x86 / x86_64 四种构建）。
 
 ---
 
