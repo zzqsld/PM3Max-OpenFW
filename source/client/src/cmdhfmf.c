@@ -4302,13 +4302,13 @@ static int CmdHF14AMfSmartBrute(const char *Cmd) {
     CLIExecWithReturn(ctx, Cmd, argtable, true);
 
 
-    bool m0 = arg_get_lit(ctx, 2);
-    bool m1 = arg_get_lit(ctx, 3);
-    bool m2 = arg_get_lit(ctx, 4);
-    bool m4 = arg_get_lit(ctx, 5);
+    bool m0 = arg_get_lit(ctx, 1);
+    bool m1 = arg_get_lit(ctx, 2);
+    bool m2 = arg_get_lit(ctx, 3);
+    bool m4 = arg_get_lit(ctx, 4);
 
-    bool transferToEml = arg_get_lit(ctx, 6);
-    bool createDumpFile = arg_get_lit(ctx, 7);
+    bool transferToEml = arg_get_lit(ctx, 5);
+    bool createDumpFile = arg_get_lit(ctx, 6);
 
     CLIParserFree(ctx);
 
